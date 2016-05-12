@@ -9,7 +9,6 @@ namespace ConsoleClientModelFirst
     {
         static void Main(string[] args)
         {
-
             using (EFDbContext context = new EFDbContext())
             {
                 Vehiculo student = new Vehiculo
