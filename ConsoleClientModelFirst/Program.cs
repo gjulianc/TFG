@@ -11,6 +11,7 @@ namespace ConsoleClientModelFirst
         {
             using (EFDbContext context = new EFDbContext())
             {
+                
                 Vehiculo student = new Vehiculo
                 {
                     Matricula = "2387FJF",

@@ -8,7 +8,7 @@ namespace EFData
             : base("name=DbConnectionString")
         {
 
-        }
+        }    
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
