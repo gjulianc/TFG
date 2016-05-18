@@ -30,7 +30,8 @@ namespace EFData
 
         public void DeleteUser(Usuario usuario)
         {
-            throw new NotImplementedException();
+            ctx.Set<Usuario>().Remove(usuario);
+            GuardarDatos();
         }
 
         public  List<Usuario> GetAllUsers()
@@ -45,12 +46,18 @@ namespace EFData
 
         public void InsertUser(Usuario usuario)
         {
-            throw new NotImplementedException();
+            ctx.Set<Usuario>().Add(usuario);
+            this.GuardarDatos();
         }
 
         public void Login(string usuario, string password)
         {
             throw new NotImplementedException();
+        }
+
+        public Usuario GetUser(int id)
+        {
+            return ctx.Set<Usuario>().Find(id);
         }
     }
 }
