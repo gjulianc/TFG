@@ -6,11 +6,14 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TFG.Contrato;
 
 namespace EFData
 {
-    class TransaccionMap: EntityTypeConfiguration<Transaccion>
+    class TransaccionMap: EntityTypeConfiguration<Transaccion>, IRepositoryTransacciones
     {
+        protected EFDbContext ctx = new EFDbContext();
+
         public TransaccionMap()
         {
             HasKey(t => t.Transaccion_Id);
@@ -30,6 +33,33 @@ namespace EFData
             //relationship
             HasRequired(t => t.Vehiculo).WithMany(c => c.Transacciones).HasForeignKey(t => t.VehiculoID).WillCascadeOnDelete(false);
             HasRequired(t => t.Base).WithMany(c => c.Transacciones).HasForeignKey(t => t.BaseID).WillCascadeOnDelete(false);
+        }
+
+        public void DeleteTransaccion(Transaccion transaccion)
+        {
+            ctx.Set<Transaccion>().Remove(transaccion);
+            GuardarDatos();
+        }
+
+        public List<Transaccion> GetAllTransacciones()
+        {
+            return ctx.Set<Transaccion>().ToList();
+        }
+
+        public Transaccion GetTransaccion(int id)
+        {
+            return ctx.Set<Transaccion>().Find(id);
+        }
+
+        public void GuardarDatos()
+        {
+            ctx.SaveChanges();
+        }
+
+        public void InsertarTransaccion(Transaccion transaccion)
+        {
+            ctx.Set<Transaccion>().Add(transaccion);
+            this.GuardarDatos();
         }
 
     }

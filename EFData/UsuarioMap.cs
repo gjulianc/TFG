@@ -11,7 +11,7 @@ namespace EFData
 {
     public class UsuarioMap: EntityTypeConfiguration<Usuario>, IRepositoryUsuarios
     {
-        protected DbContext ctx = new EFDbContext();        
+        protected EFDbContext ctx = new EFDbContext();        
 
         public UsuarioMap()
         {
@@ -36,7 +36,7 @@ namespace EFData
 
         public  List<Usuario> GetAllUsers()
         {
-            return ctx.Set<Usuario>().ToList(); ;
+            return ctx.Set<Usuario>().ToList(); 
         }
 
         public void GuardarDatos()

@@ -28,12 +28,20 @@ namespace TFG.Api.Controllers
         // GET: api/Usuarios/5
         public string Get(int id)
         {
-            return "value";
+            usuarioRepository = new UsuarioMap();
+            Usuario u = usuarioRepository.GetUser(id);
+            string json = JsonConvert.SerializeObject(u);
+
+            return json;
+
         }
+
+        
 
         // POST: api/Usuarios
         public void Post([FromBody]string value)
         {
+
         }
 
         // PUT: api/Usuarios/5
