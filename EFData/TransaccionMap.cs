@@ -10,7 +10,7 @@ using TFG.Contrato;
 
 namespace EFData
 {
-    class TransaccionMap: EntityTypeConfiguration<Transaccion>, IRepositoryTransacciones
+    public class TransaccionMap: EntityTypeConfiguration<Transaccion>, IRepositoryTransacciones
     {
         protected EFDbContext ctx = new EFDbContext();
 
